@@ -1,2 +1,2 @@
 # Project_Thumper
- finel suffre
+ This is assignment work so idk mayb just ignore dis
