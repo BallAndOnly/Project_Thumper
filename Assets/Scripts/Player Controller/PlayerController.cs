@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     [Header("Movement")]
@@ -70,19 +70,7 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerInput()
     {
         hInput = Input.GetAxisRaw("Horizontal");
-        vInput = Input.GetAxisRaw("Vertical");
-
-        //if(Input.GetKeyDown(crouchKey)) playerRigid.AddForce(Vector3.down * 15f, ForceMode.Impulse);
-        //if (Input.GetKey(crouchKey))
-        //{
-        //    transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-        //playerRigid.AddForce(Vector3.down * 5f, ForceMode.Force);
-        //}
-        //else if (Input.GetKeyUp(crouchKey))
-        //{
-        //    transform.position += new Vector3(0f, startYScale * 0.3f, 0f);
-        //    transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        //}
+        vInput = Input.GetAxisRaw("Vertical");        
 
         if (Input.GetKey(crouchKey))
         {           

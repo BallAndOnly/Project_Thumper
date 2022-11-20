@@ -6480,7 +6480,7 @@ MonoBehaviour:
   sprintSpeed: 5
   groundDrag: 5
   crouchSpeed: 1
-  crouchYScale: 0.395
+  crouchYScale: 0.6
   sprintKey: 304
   crouchKey: 306
   playerHeight: 2
