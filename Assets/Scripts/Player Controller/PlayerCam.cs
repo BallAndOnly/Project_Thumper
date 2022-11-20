@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
+    [Header("Sensitivity")]
     public float sensX;
     public float sensY;
 
-    public Transform orientation;
-
     float xRotation;
     float yRotation;
+
+    [Header("Ref thing")]
+    public Transform orientation;
+    public PlayerController playerController;
 
     public Transform CamPos;
 
@@ -34,6 +37,7 @@ public class PlayerCam : MonoBehaviour
         yRotation += mouseY;
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);       
     }
+
 }

@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private float startYScale;
     private float crouchClamp;
 
+    [Header("FlashLight")]
+    
+
     [Header("Keybinds")]
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
@@ -26,15 +29,18 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     bool onGround;
 
+    [Header("Other stuffs")]
+    public Transform camPos;
     public Transform orientation;
 
     float hInput;
     float vInput;
 
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
 
-    Rigidbody playerRigid;
+    public Rigidbody playerRigid;
 
+    public string stateString;
     public MovementState state;
     public enum MovementState
     { 
@@ -86,16 +92,19 @@ public class PlayerController : MonoBehaviour
         {
             state = MovementState.sprint;
             moveSpeed = sprintSpeed;
+            stateString = "Sprint";
         }
         else if (Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
+            stateString = "Crouching";
         }
         else 
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
+            stateString = "Walking";
         }
     }
 
@@ -120,5 +129,10 @@ public class PlayerController : MonoBehaviour
             Vector3 limitedvel = flatvel.normalized * moveSpeed;
             playerRigid.velocity = new Vector3(limitedvel.x, playerRigid.velocity.y, limitedvel.z);
         }
+    }
+
+    private void FlashLight()
+    { 
+        
     }
 }
