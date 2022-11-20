@@ -6,9 +6,20 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [Header("Movement")]
-    public float moveSpeed;
-
+    private float moveSpeed;
+    public float walkSpeed;
+    public float sprintSpeed;
     public float groundDrag;
+
+    [Header("Crouching")]
+    public float crouchSpeed;
+    public float crouchYScale;
+    private float startYScale;
+    private float crouchClamp;
+
+    [Header("Keybinds")]
+    public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode crouchKey = KeyCode.LeftControl;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -24,19 +35,31 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody playerRigid;
 
+    public MovementState state;
+    public enum MovementState
+    { 
+        walking,
+        crouching,
+        sprint
+    }
+
     private void Start()
     {
         playerRigid = GetComponent<Rigidbody>();
         playerRigid.freezeRotation = true;
         playerRigid.drag = groundDrag;
+        startYScale = transform.localScale.y;
     }
 
     private void Update()
     {
         onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        crouchClamp = Mathf.Clamp(crouchClamp, crouchYScale, startYScale);
 
         PlayerInput();
         SpeedLimit();
+        StateHandler();
+        Crouching();
     }
 
     private void FixedUpdate()
@@ -49,6 +72,43 @@ public class PlayerMovement : MonoBehaviour
         hInput = Input.GetAxisRaw("Horizontal");
         vInput = Input.GetAxisRaw("Vertical");
 
+        //if(Input.GetKeyDown(crouchKey)) playerRigid.AddForce(Vector3.down * 15f, ForceMode.Impulse);
+        //if (Input.GetKey(crouchKey))
+        //{
+        //    transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+        //playerRigid.AddForce(Vector3.down * 5f, ForceMode.Force);
+        //}
+        //else if (Input.GetKeyUp(crouchKey))
+        //{
+        //    transform.position += new Vector3(0f, startYScale * 0.3f, 0f);
+        //    transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+        //}
+
+        if (Input.GetKey(crouchKey))
+        {           
+            crouchClamp -= 0.01f;
+        }
+        else crouchClamp += 0.01f;
+    }
+
+    private void StateHandler()
+    {
+        
+        if (Input.GetKey(sprintKey) & !Input.GetKey(crouchKey))
+        {
+            state = MovementState.sprint;
+            moveSpeed = sprintSpeed;
+        }
+        else if (Input.GetKey(crouchKey))
+        {
+            state = MovementState.crouching;
+            moveSpeed = crouchSpeed;
+        }
+        else 
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
     }
 
     private void MovePlayer()
@@ -56,6 +116,11 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * vInput + orientation.right * hInput;
 
         playerRigid.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+    }
+
+    private void Crouching()
+    {
+        transform.localScale = new Vector3(transform.localScale.x, crouchClamp, transform.localScale.z);
     }
 
     private void SpeedLimit()

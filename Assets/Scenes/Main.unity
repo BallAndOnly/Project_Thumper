@@ -406,8 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e00afa3b01ecf1488c60c4331665d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 400
-  sensY: 400
+  sensX: 300
+  sensY: 300
   orientation: {fileID: 1042047893}
   CamPos: {fileID: 2003905226}
 --- !u!81 &50775232
@@ -6476,13 +6476,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb02c6c7d8dc174ba4fc890f57239cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.2
+  walkSpeed: 2
+  sprintSpeed: 5
   groundDrag: 5
+  crouchSpeed: 1
+  crouchYScale: 0.395
+  sprintKey: 304
+  crouchKey: 306
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
   orientation: {fileID: 1042047893}
+  state: 0
 --- !u!4 &1937144614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4585063621961724, guid: 9fde1e97a769ed245885f4a118e2b372, type: 3}
@@ -23791,7 +23797,6 @@ GameObject:
   - component: {fileID: 8103233206455958834}
   - component: {fileID: 550674446319218280}
   - component: {fileID: 3917858581305618244}
-  - component: {fileID: 6173859796498270840}
   m_Layer: 0
   m_Name: Rear mountain
   m_TagString: Untagged
@@ -23799,20 +23804,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &6173859796498270840
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6173859796498270839}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3152626777261419628, guid: 17c3b46ba2fcae349b967e3314b6b88b, type: 3}
 --- !u!1 &6181162110259140692
 GameObject:
   m_ObjectHideFlags: 0
