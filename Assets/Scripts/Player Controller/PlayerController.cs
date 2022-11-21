@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     private float crouchClamp;
 
     [Header("FlashLight")]
-    
+    public Transform flashLight;
+    private bool flashLightState;
 
     [Header("Keybinds")]
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode flashLightToggle = KeyCode.F;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         SpeedLimit();
         StateHandler();
         Crouching();
+        FlashLight();
     }
 
     private void FixedUpdate()
@@ -132,7 +135,11 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FlashLight()
-    { 
-        
+    {
+        if (Input.GetKeyDown(flashLightToggle)) 
+        {
+            flashLightState = !flashLightState;
+            flashLight.GetComponent<Light>().enabled = flashLightState;
+        }
     }
 }

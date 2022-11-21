@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Bobbing : MonoBehaviour
 {
+    [Header("HeadBob")]
     public float walkingBobbingSpeed = 1f;
     public float bobbingAmount = 0.05f;
+    public float crouchBobbingMul = 0.8f;
+    public float sprintBobbingMul = 1.2f;
+
     public PlayerController playerController;
 
     float defaultPosY = 0;
@@ -20,8 +24,8 @@ public class Bobbing : MonoBehaviour
     {
         if (Mathf.Abs(playerController.moveDirection.x) > 0.1f || Mathf.Abs(playerController.moveDirection.z) > 0.1f)
         {
-            timer += Time.deltaTime * (playerController.state == PlayerController.MovementState.sprint ? walkingBobbingSpeed * 2f : playerController.state == PlayerController.MovementState.crouching ? walkingBobbingSpeed * 0.8f : walkingBobbingSpeed);
-            transform.localPosition = new Vector3(transform.localPosition.x, defaultPosY + Mathf.Sin(timer) * (playerController.state == PlayerController.MovementState.sprint ? bobbingAmount * 1.2f : playerController.state == PlayerController.MovementState.sprint ? bobbingAmount * 0.8f : bobbingAmount), transform.localPosition.z);
+            timer += Time.deltaTime * (playerController.state == PlayerController.MovementState.sprint ? walkingBobbingSpeed * 2f : playerController.state == PlayerController.MovementState.crouching ? walkingBobbingSpeed * crouchBobbingMul : walkingBobbingSpeed);
+            transform.localPosition = new Vector3(transform.localPosition.x, defaultPosY + Mathf.Sin(timer) * (playerController.state == PlayerController.MovementState.sprint ? bobbingAmount * sprintBobbingMul : playerController.state == PlayerController.MovementState.crouching ? bobbingAmount * crouchBobbingMul : bobbingAmount), transform.localPosition.z);
         }
         else
         {
