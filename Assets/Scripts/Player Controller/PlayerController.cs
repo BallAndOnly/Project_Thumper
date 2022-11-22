@@ -40,9 +40,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 moveDirection;
 
-    public Rigidbody playerRigid;
-
-    public string stateString;
+    Rigidbody playerRigid;
     public MovementState state;
     public enum MovementState
     { 
@@ -95,19 +93,16 @@ public class PlayerController : MonoBehaviour
         {
             state = MovementState.sprint;
             moveSpeed = sprintSpeed;
-            stateString = "Sprint";
         }
         else if (Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
-            stateString = "Crouching";
         }
         else 
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
-            stateString = "Walking";
         }
     }
 
