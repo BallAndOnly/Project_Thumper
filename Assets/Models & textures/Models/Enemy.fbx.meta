@@ -22,8 +22,14 @@ ModelImporter:
       74: -6600140196100361893
     second: Root|Chase
   - first:
+      74: -6848888205163319204
+    second: Root|Firing
+  - first:
       74: -415929278433381538
     second: Root|Found
+  - first:
+      74: 8259081601984538137
+    second: Root|grab
   - first:
       74: 2910742486769232160
     second: Root|Idle
@@ -40,6 +46,18 @@ ModelImporter:
       74: 7804146005526014989
     second: Root|Intro
   - first:
+      74: -7892117253023224465
+    second: Root|player death
+  - first:
+      74: 7758365073697705405
+    second: Root|player death2
+  - first:
+      74: -5100919300283175556
+    second: Root|prying door
+  - first:
+      74: 4548528436073290441
+    second: Root|sealing door
+  - first:
       74: 5483515821298813727
     second: Root|Shock done
   - first:
@@ -51,142 +69,7 @@ ModelImporter:
   - first:
       74: 1335679570341400972
     second: Root|Walk
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Body
-    second: {fileID: 2100000, guid: 3121531c9dcc7bc40808a8d547ebd71f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cable
-    second: {fileID: 2100000, guid: cdfa5e052d3af4b428d2dd1f3240dc65, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cable2
-    second: {fileID: 2100000, guid: ad9e0ed05dc0f344cbc6091bb8016dab, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cable3
-    second: {fileID: 2100000, guid: 4efc1af54fc519d418cb78277f724d6c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Eye plate
-    second: {fileID: 2100000, guid: 3acef2f0740fb0c46b747e20a592388a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Foot
-    second: {fileID: 2100000, guid: 673b4ff5e2d8a744782e5b8bc272d55f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Harpoon
-    second: {fileID: 2100000, guid: 28a4fd0ae9ab5024790384255870572d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Harpoon Gun
-    second: {fileID: 2100000, guid: e763cc9464edfb7408d2a9000c59848c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Harpoon optic
-    second: {fileID: 2100000, guid: 6f3dc2fcdaf4de54197c5f73d4ac5005, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Red Glow
-    second: {fileID: 2100000, guid: 3f44368e435f3234bb893f4395a74ab7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Turret
-    second: {fileID: 2100000, guid: 0955d8a04f24098448974fe7a1729c08, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Body
-    second: {fileID: 2800000, guid: 8edcc0642dbe3274c87f302a76f96356, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Eye plate
-    second: {fileID: 2800000, guid: 613b29ef95a78694f876574509ce5a92, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Harpoon
-    second: {fileID: 2800000, guid: bc78833d539c1354fb47caf8561636f4, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Harpoon Gun
-    second: {fileID: 2800000, guid: 6ed42cb2d803c2b4db77d6b72f79fbc7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Harpoon optic
-    second: {fileID: 2800000, guid: 1225d0cf5e9be094aa527bd49e02c695, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Harpoon optic emit
-    second: {fileID: 2800000, guid: 16bea8ce6696d834b9a8f351e361fb6d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Leg
-    second: {fileID: 2800000, guid: c78954fce1519154d8c6e113deedd3aa, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Leg emit
-    second: {fileID: 2800000, guid: f9834e062a517d345af05cc06418d8a2, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Power cable
-    second: {fileID: 2800000, guid: 8eb5fc1548074d44a9a6573ad3680a7f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Power cable emit
-    second: {fileID: 2800000, guid: 8cb826b64e611844badca99ce91ed3f5, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Power cable emit2
-    second: {fileID: 2800000, guid: 2f8d60997b83e7a46887456e75c77f9b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Power cable emit3
-    second: {fileID: 2800000, guid: 8161071bd135a3e47905e29f46298001, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Power cable2
-    second: {fileID: 2800000, guid: f671c85d0ad07044b8a5cfdc5c1a5427, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Power cable3
-    second: {fileID: 2800000, guid: 358c57018a4ff0244af26b742e7879d3, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Red Glow
-    second: {fileID: 2800000, guid: d33ad0848e24f62459902274a1237be8, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Turret
-    second: {fileID: 2800000, guid: 06b59850f59691245bd6f23f971141f7, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -302,11 +185,69 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: Root|Firing
+      takeName: Root|Firing
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 99
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: Root|Found
       takeName: Root|Found
       internalID: 0
       firstFrame: 0
       lastFrame: 84
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Root|grab
+      takeName: Root|grab
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 149
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -422,7 +363,7 @@ ModelImporter:
       takeName: Root|Norm Pose
       internalID: 0
       firstFrame: 0
-      lastFrame: 124
+      lastFrame: 99
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -449,6 +390,122 @@ ModelImporter:
     - serializedVersion: 16
       name: Root|Intro
       takeName: Root|Intro
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 249
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Root|player death
+      takeName: Root|player death
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 139
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Root|player death2
+      takeName: Root|player death2
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Root|prying door
+      takeName: Root|prying door
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 149
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Root|sealing door
+      takeName: Root|sealing door
       internalID: 0
       firstFrame: 0
       lastFrame: 249
