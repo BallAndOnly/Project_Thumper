@@ -11,6 +11,14 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float groundDrag;
+    bool isExhaust = false;
+    float stamina = 100f;
+    float maxStamina;
+    public float staminaConsumption = 0.001f;
+    public float staminaRegen = 0.00075f;
+
+    private WaitForSeconds regenTick = new WaitForSeconds(0.5f);
+    private Coroutine regen;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -40,6 +48,11 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     public Image sprintBar;
 
+    [Header("Items")]
+    public bool LV1 = false;
+    public bool LV2 = false;
+    public bool LV3 = false;
+
     [Header("Refs")]
     public Transform orientation;
 
@@ -63,13 +76,16 @@ public class PlayerController : MonoBehaviour
         playerRigid.freezeRotation = true;
         playerRigid.drag = groundDrag;
         startYScale = transform.localScale.y;
+        maxStamina = stamina;
     }
 
     private void Update()
     {
         onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         crouchClamp = Mathf.Clamp(crouchClamp, crouchYScale, startYScale);
+        stamina = Mathf.Clamp(stamina, 0, maxStamina);
 
+        //Raycasto
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, interactRange))
         { 
@@ -81,7 +97,8 @@ public class PlayerController : MonoBehaviour
                 ActionUIComponent.HandPos(interactable.HandPos());
                 ActionUIComponent.ShowHand(interactable.ShowHand());
 
-                if (Input.GetKeyDown(KeyCode.E)) interactable.Interact();
+                if (Input.GetKeyDown(KeyCode.E)) 
+                    interactable.Interact();
             }
             else
             {
@@ -94,11 +111,14 @@ public class PlayerController : MonoBehaviour
             ActionUIComponent.ShowCanvas(false);
         }
 
-        PlayerInput();
+        //UI stuffs
+        sprintBar.fillAmount = stamina/maxStamina;
+
         SpeedLimit();
         StateHandler();
         Crouching();
         FlashLight();
+        PlayerInput();
 
     }
 
@@ -117,12 +137,23 @@ public class PlayerController : MonoBehaviour
             crouchClamp -= 0.01f;
         }
         else crouchClamp += 0.01f;
+
+        if (state == MovementState.sprint && (moveDirection.x != 0 || moveDirection.z != 0))
+        {
+            if(regen != null)StopCoroutine(regen);
+            stamina -= staminaConsumption;
+            if (stamina <= 0) isExhaust = true;
+        }
+        else 
+        {            
+            regen = StartCoroutine(StaminaRegen());
+        }
     }
 
     private void StateHandler()
     {
         
-        if (Input.GetKey(sprintKey) & !Input.GetKey(crouchKey))
+        if (Input.GetKey(sprintKey) & !Input.GetKey(crouchKey) & isExhaust == false)
         {
             state = MovementState.sprint;
             moveSpeed = sprintSpeed;
@@ -168,6 +199,18 @@ public class PlayerController : MonoBehaviour
         {
             flashLightState = !flashLightState;
             flashLight.GetComponent<Light>().enabled = flashLightState;
+        }
+    }
+    protected IEnumerator StaminaRegen()
+    {
+        yield return new WaitForSeconds(2f);
+
+        while (stamina < maxStamina)
+        {
+            if (stamina > maxStamina / 2.5) isExhaust = false;
+            stamina += staminaRegen * Time.deltaTime;
+            yield return regenTick;
+            if (state == MovementState.sprint && (moveDirection.x != 0 || moveDirection.z != 0)) break;
         }
     }
 }

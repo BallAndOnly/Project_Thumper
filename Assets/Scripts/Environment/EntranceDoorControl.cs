@@ -5,15 +5,11 @@ public class EntranceDoorControl : MonoBehaviour, IntInteractable
     public Animator AnimatorComponent;
     public Vector3 interactPos;
 
-    Vector3 doorTransform;
     bool isOpen;
-
-
 
     public string ShowActionText()
     {
-        if (!isOpen) return "";
-        else return "Door jammed";
+        return "";
     }
 
     public bool ShowHand()
