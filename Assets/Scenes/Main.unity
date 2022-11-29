@@ -11870,6 +11870,7 @@ MonoBehaviour:
   walkSpeed: 1.25
   sprintSpeed: 4
   groundDrag: 5
+  staminaUsage: 0.1
   crouchSpeed: 0.7
   crouchYScale: 0.5
   flashLight: {fileID: 899429218}
@@ -11881,8 +11882,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   playerCamera: {fileID: 50775230}
-  interactRange: 2
+  interactRange: 1.02
   ActionUIComponent: {fileID: 1420411695}
+  sprintBar: {fileID: 0}
+  keyCardLV1: 0
+  keyCardLV2: 0
+  keyCardLV3: 0
   orientation: {fileID: 1042047893}
   moveDirection: {x: 0, y: 0, z: 0}
   state: 0
@@ -37336,6 +37341,8 @@ GameObject:
   - component: {fileID: 3505067342274755615}
   - component: {fileID: 567858091705728857}
   - component: {fileID: 2581259163049868432}
+  - component: {fileID: 6772150235981054396}
+  - component: {fileID: 6772150235981054397}
   m_Layer: 0
   m_Name: Keycard Lv1
   m_TagString: Untagged
@@ -37343,6 +37350,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6772150235981054396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772150235981054395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4158653d8d0866146ae97f61e2d0ab42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCardLevel: 1
+  playerController: {fileID: 1925532123}
+--- !u!65 &6772150235981054397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772150235981054395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0021385, y: 0.0014763504, z: 0.00013120072}
+  m_Center: {x: -2.1337099e-16, y: 0.0000000023865148, z: -3.660309e-17}
 --- !u!1 &6777752473195330238
 GameObject:
   m_ObjectHideFlags: 0

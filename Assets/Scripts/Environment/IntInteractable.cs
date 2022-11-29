@@ -1,5 +1,9 @@
+using UnityEngine;
+
 public interface IntInteractable
 {
-    string GetInteractionTex();
+    string ShowActionText();
+    bool ShowHand();
+    Vector3 HandPos();
     void Interact();
 }

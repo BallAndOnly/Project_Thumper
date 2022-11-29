@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -35,6 +36,9 @@ public class PlayerController : MonoBehaviour
     public Transform playerCamera;
     public float interactRange;
     public ActionUIController ActionUIComponent;
+
+    [Header("UI")]
+    public Image sprintBar;
 
     [Header("Refs")]
     public Transform orientation;
@@ -72,12 +76,12 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(playerCamera.position, playerCamera.TransformDirection(Vector3.forward).normalized * interactRange, Color.green);
             if (hit.collider.tag == "Interactable")
             {
-                EntranceDoorControl door = hit.collider.GetComponent<EntranceDoorControl>();
-                ActionUIComponent.ShowActionText(door.ShowActionText());
-                ActionUIComponent.HandPos(door.HandPos());
-                ActionUIComponent.ShowHand(door.ShowHand());
+                IntInteractable interactable = hit.collider.GetComponent<IntInteractable>();
+                ActionUIComponent.ShowActionText(interactable.ShowActionText());
+                ActionUIComponent.HandPos(interactable.HandPos());
+                ActionUIComponent.ShowHand(interactable.ShowHand());
 
-                if (Input.GetKeyDown(KeyCode.E)) door.Interact();
+                if (Input.GetKeyDown(KeyCode.E)) interactable.Interact();
             }
             else
             {

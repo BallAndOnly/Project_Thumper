@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EntranceDoorControl : MonoBehaviour
+public class EntranceDoorControl : MonoBehaviour, IntInteractable
 {
     public Animator AnimatorComponent;
     public Vector3 interactPos;
@@ -8,10 +8,7 @@ public class EntranceDoorControl : MonoBehaviour
     Vector3 doorTransform;
     bool isOpen;
 
-    private void Update()
-    {
-        doorTransform = transform.position + interactPos;
-    }
+
 
     public string ShowActionText()
     {
@@ -25,7 +22,7 @@ public class EntranceDoorControl : MonoBehaviour
     }
     public Vector3 HandPos()
     {
-        return doorTransform;
+        return transform.position + interactPos;
     }
 
     public void Interact()
