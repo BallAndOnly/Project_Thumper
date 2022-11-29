@@ -31,8 +31,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     bool onGround;
 
-    [Header("Other stuffs")]
-    public Transform camPos;
+    [Header("Interactions")]
+    public Transform playerCamera;
+    public float interactRange;
+    public ActionUIController ActionUIComponent;
+
+    [Header("Refs")]
     public Transform orientation;
 
     float hInput;
@@ -62,11 +66,36 @@ public class PlayerController : MonoBehaviour
         onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         crouchClamp = Mathf.Clamp(crouchClamp, crouchYScale, startYScale);
 
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, interactRange))
+        { 
+            Debug.DrawRay(playerCamera.position, playerCamera.TransformDirection(Vector3.forward).normalized * interactRange, Color.green);
+            if (hit.collider.tag == "Interactable")
+            {
+                EntranceDoorControl door = hit.collider.GetComponent<EntranceDoorControl>();
+                ActionUIComponent.ShowActionText(door.ShowActionText());
+                ActionUIComponent.HandPos(door.HandPos());
+                ActionUIComponent.ShowHand(door.ShowHand());
+
+                if (Input.GetKeyDown(KeyCode.E)) door.Interact();
+            }
+            else
+            {
+                ActionUIComponent.ShowCanvas(false);
+            }
+        }
+        else 
+        { 
+            Debug.DrawRay(playerCamera.position, playerCamera.TransformDirection(Vector3.forward).normalized * interactRange, Color.yellow);
+            ActionUIComponent.ShowCanvas(false);
+        }
+
         PlayerInput();
         SpeedLimit();
         StateHandler();
         Crouching();
         FlashLight();
+
     }
 
     private void FixedUpdate()
