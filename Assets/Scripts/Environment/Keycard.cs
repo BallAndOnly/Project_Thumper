@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class Keycard : MonoBehaviour, IntInteractable
 {
+    public AudioClip pickupSound;
+    protected AudioSource audioSource;
     public int keycardLV = 1;
     public PlayerController playerController;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public string ShowActionText()
     {
@@ -19,10 +26,8 @@ public class Keycard : MonoBehaviour, IntInteractable
     }
     public void Interact() 
     {
-        if (keycardLV == 1) { playerController.LV1 = true; }
-        else if (keycardLV == 2) { playerController.LV2 = true; }
-        else if (keycardLV == 3) { playerController.LV3 = true; }
-
+        audioSource.clip = pickupSound;
+        playerController.LV = keycardLV;
         Destroy(transform.gameObject);
     }
 }

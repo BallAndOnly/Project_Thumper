@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float groundDrag;
+    public bool unlimitedStamina;
     bool isExhaust = false;
     float stamina = 100f;
     float maxStamina;
@@ -49,9 +50,7 @@ public class PlayerController : MonoBehaviour
     public Image sprintBar;
 
     [Header("Items")]
-    public bool LV1 = false;
-    public bool LV2 = false;
-    public bool LV3 = false;
+    public int LV = 0;
 
     [Header("Refs")]
     public Transform orientation;
@@ -138,7 +137,7 @@ public class PlayerController : MonoBehaviour
         }
         else crouchClamp += 0.01f;
 
-        if (state == MovementState.sprint && (moveDirection.x != 0 || moveDirection.z != 0))
+        if (state == MovementState.sprint && (moveDirection.x != 0 || moveDirection.z != 0) && !unlimitedStamina)
         {
             if(regen != null)StopCoroutine(regen);
             stamina -= staminaConsumption;
