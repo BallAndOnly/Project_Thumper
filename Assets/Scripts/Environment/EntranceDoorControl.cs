@@ -4,12 +4,17 @@ public class EntranceDoorControl : MonoBehaviour, IntInteractable
 {
     public Animator AnimatorComponent;
     public Vector3 interactPos;
+    public string interactText;
+    public float Pitch;
+    public AudioSource DoorSource;
+    public AudioClip DoorSound;
 
     bool isOpen;
 
     public string ShowActionText()
     {
-        return "";
+        if (isOpen) return interactText;
+        else return "";
     }
 
     public bool ShowHand()
@@ -23,7 +28,14 @@ public class EntranceDoorControl : MonoBehaviour, IntInteractable
 
     public void Interact()
     {
+        if (!isOpen) 
+        {
+            DoorSource.PlayOneShot(DoorSource.clip);
+            DoorSource.pitch = Pitch;
+            DoorSource.volume = 1f;
+        }
+
         isOpen = true;
-        AnimatorComponent.SetBool("Entrance IsOpen", isOpen);
+        AnimatorComponent.SetBool("Entrance IsOpen", isOpen);      
     }
 }

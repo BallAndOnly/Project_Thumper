@@ -3,14 +3,9 @@ using UnityEngine;
 public class Keycard : MonoBehaviour, IntInteractable
 {
     public AudioClip pickupSound;
-    protected AudioSource audioSource;
+    public AudioSource audioSource;
     public int keycardLV = 1;
     public PlayerController playerController;
-
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     public string ShowActionText()
     {
@@ -26,8 +21,9 @@ public class Keycard : MonoBehaviour, IntInteractable
     }
     public void Interact() 
     {
-        audioSource.clip = pickupSound;
+        audioSource.PlayOneShot(audioSource.clip);
+        audioSource.volume = 0.7f;
         playerController.LV = keycardLV;
-        Destroy(transform.gameObject);
+        transform.gameObject.SetActive(false);
     }
 }

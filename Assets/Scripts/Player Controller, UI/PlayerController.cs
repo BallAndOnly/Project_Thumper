@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
     [Header("Items")]
     public int LV = 0;
 
+    [Header("Sounds")]
+    public AudioSource FootStepSource;
+    public AudioClip[] WalkSounds, SprintSounds;
+    public float WalkSoundPitch;
+    public float SprintSoundPitch;
+
     [Header("Refs")]
     public Transform orientation;
 
@@ -118,12 +124,12 @@ public class PlayerController : MonoBehaviour
         Crouching();
         FlashLight();
         PlayerInput();
-
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+        Sounds();
     }
 
     private void PlayerInput()
@@ -212,4 +218,27 @@ public class PlayerController : MonoBehaviour
             if (state == MovementState.sprint && (moveDirection.x != 0 || moveDirection.z != 0)) break;
         }
     }
+
+    private void Sounds()
+    {
+        if (state == MovementState.walking && (moveDirection.x != 0 || moveDirection.z != 0))
+        {
+            int ranWalkSound = Random.Range(0, WalkSounds.Length);
+            FootStepSource.clip = WalkSounds[ranWalkSound];
+            if (!FootStepSource.isPlaying)
+                FootStepSource.PlayOneShot(FootStepSource.clip);
+                FootStepSource.pitch = WalkSoundPitch;
+                FootStepSource.volume = 0.5f;
+        }
+        else if (state == MovementState.sprint && (moveDirection.x != 0 || moveDirection.z != 0))
+        {
+            int ranSprintSound = Random.Range(0, WalkSounds.Length);
+            FootStepSource.clip = SprintSounds[ranSprintSound];
+            if (!FootStepSource.isPlaying)                
+                FootStepSource.PlayOneShot(FootStepSource.clip);
+                FootStepSource.pitch = SprintSoundPitch;
+                FootStepSource.volume = 1f;
+        }
+    }
+   
 }

@@ -10,6 +10,7 @@ public class SlideDoorKeypad : MonoBehaviour, IntInteractable
     public SlideDoor door;
     public string interactText;
     public int neededLV = 1;
+    public bool doorPlaySound = false;
 
     private void Start()
     {
@@ -36,9 +37,16 @@ public class SlideDoorKeypad : MonoBehaviour, IntInteractable
     {
         if (door.isAnimationPlaying && playerController.LV >= neededLV)
         {
-            audioSource.clip = access;
+            doorPlaySound = true;
+            audioSource.PlayOneShot(access);
+            audioSource.volume = 0.7f;
             door.isOpen = !door.isOpen;
         }
-        else { audioSource.clip = denied; }
+        else 
+        {
+            audioSource.PlayOneShot(denied);
+            audioSource.volume = 0.6f;
+            doorPlaySound = false;
+        }
     }
 }
