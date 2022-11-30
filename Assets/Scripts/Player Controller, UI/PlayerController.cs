@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     public int LV = 0;
 
     [Header("Sounds")]
-    public AudioSource FootStepSource;
+    public AudioSource FootStepSource, FlashLightSource;
     public AudioClip[] WalkSounds, SprintSounds;
     public float WalkSoundPitch;
     public float SprintSoundPitch;
@@ -202,8 +202,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(flashLightToggle)) 
         {
+            FlashLightSource.PlayOneShot(FlashLightSource.clip);
+            FlashLightSource.pitch = Random.Range(0.9f, 1.1f);
             flashLightState = !flashLightState;
-            flashLight.GetComponent<Light>().enabled = flashLightState;
+            flashLight.GetComponent<Light>().enabled = flashLightState;            
         }
     }
     protected IEnumerator StaminaRegen()

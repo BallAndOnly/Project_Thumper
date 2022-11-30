@@ -9,6 +9,7 @@ public class Spark : MonoBehaviour
     public float sparkChance; //Out of 100 percent so i guess 0 will just be none
     public float sparkAmount; //Spark power
     public float dieSpeed; //How fast the light will die out
+    public AudioSource audioSource;
 
     private float originalIntensity;
     float chance;
@@ -28,9 +29,14 @@ public class Spark : MonoBehaviour
     {
         intensityClamp = Mathf.Clamp(intensityClamp, 0f, 5f);
         chance = Random.Range(0f, 100f);
-        if (chance <= sparkChance) intensityClamp += sparkAmount;
+        if (chance <= sparkChance) 
+        {
+            intensityClamp += sparkAmount;
+            audioSource.PlayOneShot(audioSource.clip);
+        }
         else if (intensityClamp < 100f) intensityClamp -= dieSpeed;
 
         this.gameObject.GetComponent<Light>().intensity = (intensityClamp);
+        audioSource.volume = (intensityClamp / 100);
     }
 }

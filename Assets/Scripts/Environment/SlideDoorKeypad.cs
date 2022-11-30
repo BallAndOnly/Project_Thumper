@@ -35,7 +35,7 @@ public class SlideDoorKeypad : MonoBehaviour, IntInteractable
 
     public void Interact()
     {
-        if (door.isAnimationPlaying && playerController.LV >= neededLV)
+        if (door.isAnimationPlaying && playerController.LV >= neededLV && doorPlaySound == false)
         {
             doorPlaySound = true;
             audioSource.PlayOneShot(access);
