@@ -9,6 +9,7 @@ public class Lightflicker : MonoBehaviour
     public float lightFlickChance; //Out of 100 percent so i guess 0 will just be none
     public float flickAmount; //Amount of flick from 0 to 100
     public float regenSpeed; //How fast the light will go back to it original intensity
+    public AudioSource audioSource;
 
     private float originalIntensity;
     float chance;
@@ -32,5 +33,6 @@ public class Lightflicker : MonoBehaviour
         else if (intensityClamp < 100f) intensityClamp += regenSpeed;
 
         this.gameObject.GetComponent<Light>().intensity = originalIntensity * (intensityClamp / 100);
+        audioSource.volume = 1.75f - (intensityClamp/100);
     }
 }
