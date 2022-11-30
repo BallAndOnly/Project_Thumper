@@ -40672,7 +40672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6452418777731644430, guid: cb01ae0e76b84174e894e1f76671cfef, type: 3}
       propertyPath: speed
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6452418777731644430, guid: cb01ae0e76b84174e894e1f76671cfef, type: 3}
       propertyPath: enemyFOV
@@ -40680,7 +40680,7 @@ PrefabInstance:
       objectReference: {fileID: 919132149592950175}
     - target: {fileID: 6452418777731644430, guid: cb01ae0e76b84174e894e1f76671cfef, type: 3}
       propertyPath: chaseSpeed
-      value: 3
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 6452418777731644430, guid: cb01ae0e76b84174e894e1f76671cfef, type: 3}
       propertyPath: playerTransform
@@ -40688,7 +40688,7 @@ PrefabInstance:
       objectReference: {fileID: 1925532122}
     - target: {fileID: 6452418777731644431, guid: cb01ae0e76b84174e894e1f76671cfef, type: 3}
       propertyPath: m_Speed
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4526188633146098315, guid: cb01ae0e76b84174e894e1f76671cfef, type: 3}

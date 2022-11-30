@@ -54,6 +54,7 @@ public class MainEnemyController : MonoBehaviour
         enemyNavAgent.SetDestination(activeFollowPos);
 
         StateHandler();
+        AnimHandler();
 
         Vel = (transform.position - previous) / Time.deltaTime;
         distanceToTar = (Vector3.Distance(transform.position, activeFollowPos));
@@ -66,31 +67,26 @@ public class MainEnemyController : MonoBehaviour
         {
             state = MovementState.isChasing;
             enemyNavAgent.speed = chaseSpeed;
-            animator.SetInteger("Movement", 2);
-            animator.SetBool("Idle", false);
             activeFollowPos = playerTransform.position;
         }
         else if (!enemyFOV.canSeePlayer)
         {          
             enemyNavAgent.speed = speed;
             activeFollowPos = enemyFOV.targetLastKnowPos;
-
-            if ((Vector3.Distance(transform.position, activeFollowPos) <= 0.15) || (Vel.x == 0f || Vel.y == 0f))
-            {
-                state = MovementState.isIdle;
-                animator.SetInteger("Movement", 0);
-                animator.SetBool("Idle", true);
-            }
-            else
-            {
-                state = MovementState.isSearching;
-                animator.SetInteger("Movement", 1);
-            }
+            if( Vel.x == 0 && Vel.y == 0 )state = MovementState.isIdle;
+            else state = MovementState.isSearching;
+            
         }
     }
 
     private void AnimHandler()
     {
+        animator.SetBool("Idle", state == MovementState.isIdle);
+        if(state == MovementState.isSearching) animator.SetInteger("Movement", 1);
+        else if(state == MovementState.isChasing) animator.SetInteger("Movement", 2);
+        else animator.SetInteger("Movement", 0);
+
+
         //if ((Vel.x != 0.1 || Vel.z != 0.1)) animator.SetInteger("Movement", 2);
     }
 
